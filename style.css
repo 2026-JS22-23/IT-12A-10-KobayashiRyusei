@@ -1,0 +1,273 @@
+  :root{
+    --cream: #f6f1e7;
+    --card: #ffffff;
+    --ink: #1f2a44;
+    --gold: #c9a227;
+    --vermillion: #a63d30;
+    --slate: #5b6472;
+    --font-serif: "YuMincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
+    --font-sans: "Hiragino Kaku Gothic ProN", "Yu Gothic Medium", "Yu Gothic", "Meiryo", sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body{
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-sans);
+  }
+
+  a { color: inherit; }
+
+  /* ---------- ヘッダー ---------- */
+  header.site-header{
+    position: relative;
+    overflow: hidden;
+    background: var(--ink);
+    color: #fbf8f2;
+    padding: 56px 24px 40px;
+  }
+  header.site-header .kicker-glyph{
+    position: absolute;
+    right: -10px;
+    top: -40px;
+    font-family: var(--font-serif);
+    font-size: 220px;
+    color: #fbf8f2;
+    opacity: .06;
+    line-height: 1;
+    pointer-events: none;
+  }
+  header.site-header .inner{
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  header.site-header h1{
+    font-family: var(--font-serif);
+    font-size: clamp(1.7rem, 4vw, 2.5rem);
+    margin: 0 0 14px;
+    letter-spacing: .02em;
+  }
+  header.site-header .rule{
+    width: 64px;
+    height: 3px;
+    background: var(--gold);
+    margin: 0 0 16px;
+  }
+  header.site-header p{
+    max-width: 560px;
+    font-size: .95rem;
+    line-height: 1.9;
+    color: #d8dbe6;
+    margin: 0;
+  }
+
+  /* ---------- カテゴリで絞り込み ---------- */
+  .filters{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 24px 4px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .filters .filters-label{
+    font-size: .82rem;
+    color: var(--slate);
+  }
+  #filter-group label{
+    font-family: var(--font-sans);
+    font-size: .82rem;
+  }
+  .ui-controlgroup .ui-button{
+    background: var(--card);
+    border: 1px solid rgba(31,42,68,.18);
+    color: var(--ink);
+    padding: 6px 14px;
+  }
+  .ui-controlgroup .ui-button.ui-state-active,
+  .ui-controlgroup .ui-button.ui-checkboxradio-checked{
+    background: var(--ink);
+    border-color: var(--ink);
+    color: #fbf8f2;
+  }
+
+  /* ---------- 地図＋サイドバーのレイアウト ---------- */
+  .layout{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 16px 24px 48px;
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+  @media (max-width: 880px){
+    .layout{ grid-template-columns: 1fr; }
+  }
+
+  .map-card{
+    background: var(--card);
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 18px 40px rgba(31,42,68,.16);
+  }
+  #map{ width: 100%; height: 480px; }
+  @media (max-width: 880px){
+    #map{ height: 320px; }
+  }
+
+  .sidebar h2{
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    margin: 0 0 4px;
+  }
+  .sidebar .lead{
+    color: var(--slate);
+    font-size: .82rem;
+    line-height: 1.7;
+    margin: 0 0 16px;
+  }
+  .geo-row{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  #geo-sort-btn{
+    font-family: var(--font-sans);
+    font-size: .8rem;
+    font-weight: 700;
+    color: #fbf8f2;
+    background: var(--vermillion);
+    border: none;
+    border-radius: 99px;
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+  #geo-sort-btn:hover{ background: #8c332a; }
+  #geo-status{
+    font-size: .76rem;
+    color: var(--slate);
+  }
+
+  /* ---------- アコーディオン（jQuery UI）の名古屋テーマ化 ---------- */
+  .ui-accordion .ui-accordion-header{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--card);
+    border: 1px solid rgba(31,42,68,.12);
+    border-radius: 10px;
+    margin: 0 0 8px;
+    padding: 10px 34px 10px 12px;
+    color: var(--ink);
+    position: relative;
+  }
+  .ui-accordion .ui-accordion-header::after{
+    content: "▸";
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gold);
+    transition: transform .2s ease;
+  }
+  .ui-accordion .ui-accordion-header.ui-state-active::after{
+    transform: translateY(-50%) rotate(90deg);
+  }
+  .ui-accordion .ui-accordion-header.ui-state-active{
+    background: var(--ink);
+    color: #fbf8f2;
+    border-color: var(--ink);
+  }
+  .ui-accordion .ui-accordion-header.ui-state-active .h-name{ color: #fbf8f2; }
+  .ui-accordion .ui-accordion-content{
+    border: none;
+    background: transparent;
+    padding: 4px 4px 16px;
+  }
+  .thumb{
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+  .h-text{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+    min-width: 0;
+  }
+  .h-name{
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: .92rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .h-badge{
+    align-self: flex-start;
+    font-size: .66rem;
+    color: #fff;
+    padding: 1px 8px;
+    border-radius: 99px;
+  }
+  .h-distance{
+    font-size: .72rem;
+    font-weight: 700;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+  .panel-desc{
+    margin: 0 0 8px;
+    font-size: .84rem;
+    line-height: 1.75;
+  }
+  .panel-meta{
+    margin: 0 0 10px;
+    font-size: .78rem;
+    color: var(--slate);
+    line-height: 1.7;
+  }
+  .btn-link{
+    display: inline-block;
+    font-size: .78rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--ink);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 2px;
+  }
+  .btn-link:hover{ color: var(--vermillion); border-color: var(--vermillion); }
+  .empty-msg{ font-size: .82rem; color: var(--slate); }
+
+  /* ---------- Googleマップ情報ウィンドウの中身 ---------- */
+  .iw{ width: 230px; font-family: var(--font-sans); }
+  .iw-photo{ width: 100%; height: 128px; object-fit: cover; display: block; }
+  .iw-body{ padding: 12px 14px 14px; }
+  .iw-title{
+    font-family: var(--font-serif);
+    font-size: 1.02rem;
+    margin: 0;
+  }
+  .gm-style .gm-style-iw-c{ padding: 0 !important; border-radius: 16px !important; }
+  .gm-style .gm-style-iw-d{ overflow: hidden !important; }
+
+  /* ---------- フッター ---------- */
+  footer.site-footer{
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 24px 60px;
+    font-size: .74rem;
+    color: var(--slate);
+    line-height: 1.9;
+    border-top: 1px solid rgba(31,42,68,.12);
+  }

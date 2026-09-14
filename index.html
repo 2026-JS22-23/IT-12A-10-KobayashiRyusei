@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>名古屋 観光名所めぐり | Googleマップで見る</title>
+
+<!-- jQuery UI の見た目(CSS)を読み込む。中身は下のCSSで名古屋テーマに上書きしています -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css">
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <span class="kicker-glyph" aria-hidden="true">城</span>
+    <div class="inner">
+      <h1>名古屋 観光名所めぐり</h1>
+      <div class="rule"></div>
+      <p>地元・名古屋のお気に入りスポットを5つ選び、Googleマップ上にまとめました。マーカーや右側の一覧をクリックすると、写真つきの詳しい紹介が見られます。</p>
+    </div>
+  </header>
+
+  <section class="filters">
+    <span class="filters-label">カテゴリで絞り込み：</span>
+    <div id="filter-group">
+      <input type="radio" name="cat" id="cat-all" value="all" checked><label for="cat-all">すべて</label>
+      <input type="radio" name="cat" id="cat-castle" value="castle"><label for="cat-castle">城</label>
+      <input type="radio" name="cat" id="cat-shrine" value="shrine"><label for="cat-shrine">神社</label>
+      <input type="radio" name="cat" id="cat-garden" value="garden"><label for="cat-garden">動植物園</label>
+      <input type="radio" name="cat" id="cat-temple" value="temple"><label for="cat-temple">寺院</label>
+      <input type="radio" name="cat" id="cat-aquarium" value="aquarium"><label for="cat-aquarium">水族館</label>
+    </div>
+  </section>
+
+  <main class="layout">
+    <div class="map-card">
+      <div id="map"></div>
+    </div>
+
+    <aside class="sidebar">
+      <h2>見どころ一覧</h2>
+      <p class="lead">項目をクリックすると詳しい説明が開き、地図もその場所に移動します。</p>
+
+      <div class="geo-row">
+        <button type="button" id="geo-sort-btn">現在地から近い順に並べる</button>
+        <span id="geo-status" aria-live="polite"></span>
+      </div>
+
+      <div id="spot-accordion"></div>
+    </aside>
+  </main>
+
+  <!-- jQuery / jQuery UI（アコーディオンやカテゴリボタンの見た目・動きに使用） -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+  <script src="script.js"></script>
+
+  <!--
+    Google Maps JavaScript API の読み込み。
+    ★注意：このAPIキーはあなたのGoogle Cloudアカウントに紐づいています。
+       公開する場合はGoogle Cloud Consoleで「HTTPリファラー制限」をかけることをおすすめします。
+    callback=initMap により、読み込みが完了すると上の initMap() が自動で呼ばれます。
+  -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCAKLjisxFelKwIl1_G6MiEO9-ya7Twr5s&callback=initMap"></script>
+
+</body>
+</html>
+1
